@@ -17,8 +17,6 @@ public class StoryHandlerPostTest extends StoryHandlerConfig {
 
     // Set the story 20 to a popularity of 30
     CallPostURL postPopularity = new CallPostURL(BASE_URL + "/story/20", "{\"popularity\":30}");
-    postPopularity.call();
-
     String prettyJson = JSONUtils.getPrettyJSONString("{\"popularity\":30}");
 
     Assert.assertEquals(prettyJson, postPopularity.call());
