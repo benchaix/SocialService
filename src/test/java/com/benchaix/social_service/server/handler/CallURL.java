@@ -3,11 +3,11 @@ package com.benchaix.social_service.server.handler;
 import java.util.concurrent.Callable;
 
 /**
- * Define a callable URL Object
+ * Define an abstract URL Object
  * 
  * @author Ben Chaix
  */
-public class CallURL implements Callable<String> {
+public abstract class CallURL implements Callable<String> {
 
   protected final String URL;
   protected final String body;
