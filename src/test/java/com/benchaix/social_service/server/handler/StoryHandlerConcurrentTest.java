@@ -55,5 +55,6 @@ public class StoryHandlerConcurrentTest extends StoryHandlerConfig {
     } catch (InterruptedException | ExecutionException ex) {
       System.out.println(ex.getMessage());
     }
+    newCachedThreadPool.shutdown();
   }
 }
