@@ -6,16 +6,16 @@ This HTTP server serves a RESTful API with no use of third party framework like 
 We have a RESTful resource called "story", which we need to track how many people like and dislike the object, referred to as the "popularity".
 We need endpoints for the following actions:
 
-GET /story/{id} - Retrieve the current popularity of a story/{id}
-POST /story/{id} - Explicitly set the current popularity of a story
-PUT /story/{id}/like - "Like" the story (increment the story's popularity by one)
-PUT /story/{id}/dislike - "Dislike" the story (decrement the story's popularity by one)
+GET /story/{id} - Retrieve the current popularity of a story/{id}  
+POST /story/{id} - Explicitly set the current popularity of a story  
+PUT /story/{id}/like - "Like" the story (increment the story's popularity by one)  
+PUT /story/{id}/dislike - "Dislike" the story (decrement the story's popularity by one)  
 
 On success each endpoint should return a HTTP status code of 200, with a response body containing the popularity of the story being acted on after the action completes.
 On error an appropriate error should be returned such as 404 for missing objects. An example of a successful response body would be:
 
-{
-	"popularity": 40
+{  
+	"popularity": 40  
 }
 
 
