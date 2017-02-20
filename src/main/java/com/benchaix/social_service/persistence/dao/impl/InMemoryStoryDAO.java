@@ -1,7 +1,8 @@
 package com.benchaix.social_service.persistence.dao.impl;
 
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.benchaix.social_service.model.Story;
 import com.benchaix.social_service.persistence.dao.StoryDAO;
@@ -13,23 +14,24 @@ import com.benchaix.social_service.persistence.dao.StoryDAO;
  */
 public class InMemoryStoryDAO implements StoryDAO {
   // contains default stories
-  private HashMap<Integer, Story> stories = new HashMap<>();
+  private Map<Integer, Story> stories;
 
   public InMemoryStoryDAO() {
     initialize();
   }
 
   public void initialize() {
-    stories = new HashMap<>();
+    stories = new ConcurrentHashMap<>();
     // add 100 default stories with no likes
     for (int i = 1; i <= 100; i++) {
-      initializeStories(i);
+      addStory(i);
     }
   }
 
-  private void initializeStories(int id) {
+  public synchronized Story addStory(int id) {
     Story story = new Story(id, 0L);
-    stories.put(id, story);
+    story = stories.putIfAbsent(id, story);
+    return story;
   }
 
   @Override
